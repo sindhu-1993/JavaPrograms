@@ -75,19 +75,24 @@ public class q31to40 {
             freq.put(c, freq.getOrDefault(c, 0) + 1);
 
         int first = 0, second = 0;
-        char res = '\0';
+        char firstChar = '\0', secondChar = '\0';
         for (Map.Entry<Character, Integer> entry : freq.entrySet()) {
             int count = entry.getValue();
             if (count > first) {
                 second = first;
+                secondChar = firstChar;
                 first = count;
+                firstChar = entry.getKey();
             } else if (count > second && count != first) {
                 second = count;
-                res = entry.getKey();
+                secondChar = entry.getKey();
             }
         }
         System.out.println("The given string is: " + str);
-        System.out.println("The second most frequent char in the string is: " + res);
+        if (secondChar != '\0')
+            System.out.println("The second most frequent char in the string is: " + secondChar);
+        else
+            System.out.println("No second most frequent character found.");
         System.out.println(".....................................................");
     }
 
