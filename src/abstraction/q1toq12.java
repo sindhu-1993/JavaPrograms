@@ -1,0 +1,494 @@
+package abstraction;
+
+// -------------------- Question 1 --------------------
+abstract class AnimalQ1 {
+    abstract void sound();
+}
+
+class LionQ1 extends AnimalQ1 {
+    void sound() {
+        System.out.println("Lion roars");
+    }
+}
+
+class TigerQ1 extends AnimalQ1 {
+    void sound() {
+        System.out.println("Tiger growls");
+    }
+}
+
+// -------------------- Question 2 --------------------
+abstract class ShapeQ2 {
+    abstract double calculateArea();
+
+    abstract double calculatePerimeter();
+}
+
+class CircleQ2 extends ShapeQ2 {
+    double radius;
+
+    CircleQ2(double r) {
+        radius = r;
+    }
+
+    double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+class TriangleQ2 extends ShapeQ2 {
+    double a, b, c;
+
+    TriangleQ2(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    double calculateArea() {
+        double s = (a + b + c) / 2;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    double calculatePerimeter() {
+        return a + b + c;
+    }
+}
+
+// -------------------- Question 3 --------------------
+abstract class BankAccountQ3 {
+    double balance;
+
+    abstract void deposit(double amount);
+
+    abstract void withdraw(double amount);
+}
+
+class SavingsAccountQ3 extends BankAccountQ3 {
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    void withdraw(double amount) {
+        if (balance >= amount)
+            balance -= amount;
+        else
+            System.out.println("Insufficient funds in SavingsAccount");
+    }
+}
+
+class CurrentAccountQ3 extends BankAccountQ3 {
+    void deposit(double amount) {
+        balance += amount;
+    }
+
+    void withdraw(double amount) {
+        balance -= amount; // Allow overdraft
+    }
+}
+
+// -------------------- Question 4 --------------------
+abstract class AnimalQ4 {
+    abstract void eat();
+
+    abstract void sleep();
+}
+
+class LionQ4 extends AnimalQ4 {
+    void eat() {
+        System.out.println("Lion eats meat");
+    }
+
+    void sleep() {
+        System.out.println("Lion sleeps 20 hours");
+    }
+}
+
+class TigerQ4 extends AnimalQ4 {
+    void eat() {
+        System.out.println("Tiger eats deer");
+    }
+
+    void sleep() {
+        System.out.println("Tiger sleeps 18 hours");
+    }
+}
+
+class DeerQ4 extends AnimalQ4 {
+    void eat() {
+        System.out.println("Deer eats grass");
+    }
+
+    void sleep() {
+        System.out.println("Deer sleeps 12 hours");
+    }
+}
+
+// -------------------- Question 5 --------------------
+abstract class EmployeeQ5 {
+    abstract double calculateSalary();
+
+    abstract void displayInfo();
+}
+
+class ManagerQ5 extends EmployeeQ5 {
+    double base = 50000, bonus = 20000;
+
+    double calculateSalary() {
+        return base + bonus;
+    }
+
+    void displayInfo() {
+        System.out.println("Manager Salary: " + calculateSalary());
+    }
+}
+
+class ProgrammerQ5 extends EmployeeQ5 {
+    double base = 40000, overtime = 5000;
+
+    double calculateSalary() {
+        return base + overtime;
+    }
+
+    void displayInfo() {
+        System.out.println("Programmer Salary: " + calculateSalary());
+    }
+}
+
+// -------------------- Question 6 --------------------
+abstract class Shape3DQ6 {
+    abstract double calculateVolume();
+
+    abstract double calculateSurfaceArea();
+}
+
+class SphereQ6 extends Shape3DQ6 {
+    double r;
+
+    SphereQ6(double r) {
+        this.r = r;
+    }
+
+    double calculateVolume() {
+        return (4.0 / 3.0) * Math.PI * Math.pow(r, 3);
+    }
+
+    double calculateSurfaceArea() {
+        return 4 * Math.PI * r * r;
+    }
+}
+
+class CubeQ6 extends Shape3DQ6 {
+    double side;
+
+    CubeQ6(double s) {
+        side = s;
+    }
+
+    double calculateVolume() {
+        return side * side * side;
+    }
+
+    double calculateSurfaceArea() {
+        return 6 * side * side;
+    }
+}
+
+// -------------------- Question 7 --------------------
+abstract class VehicleQ7 {
+    abstract void startEngine();
+
+    abstract void stopEngine();
+}
+
+class CarQ7 extends VehicleQ7 {
+    void startEngine() {
+        System.out.println("Car engine started");
+    }
+
+    void stopEngine() {
+        System.out.println("Car engine stopped");
+    }
+}
+
+class MotorcycleQ7 extends VehicleQ7 {
+    void startEngine() {
+        System.out.println("Motorcycle engine started");
+    }
+
+    void stopEngine() {
+        System.out.println("Motorcycle engine stopped");
+    }
+}
+
+// -------------------- Question 8 --------------------
+abstract class PersonQ8 {
+    abstract void eat();
+
+    abstract void exercise();
+}
+
+class AthleteQ8 extends PersonQ8 {
+    void eat() {
+        System.out.println("Athlete eats healthy food");
+    }
+
+    void exercise() {
+        System.out.println("Athlete exercises daily");
+    }
+}
+
+class LazyPersonQ8 extends PersonQ8 {
+    void eat() {
+        System.out.println("Lazy person eats junk food");
+    }
+
+    void exercise() {
+        System.out.println("Lazy person rarely exercises");
+    }
+}
+
+// -------------------- Question 9 --------------------
+abstract class InstrumentQ9 {
+    abstract void play();
+
+    abstract void tune();
+}
+
+class GlockenspielQ9 extends InstrumentQ9 {
+    void play() {
+        System.out.println("Playing Glockenspiel");
+    }
+
+    void tune() {
+        System.out.println("Tuning Glockenspiel");
+    }
+}
+
+class ViolinQ9 extends InstrumentQ9 {
+    void play() {
+        System.out.println("Playing Violin");
+    }
+
+    void tune() {
+        System.out.println("Tuning Violin");
+    }
+}
+
+// -------------------- Question 10 --------------------
+abstract class Shape2DQ10 {
+    abstract void draw();
+
+    abstract void resize(double factor);
+}
+
+class RectangleQ10 extends Shape2DQ10 {
+    double w, h;
+
+    RectangleQ10(double w, double h) {
+        this.w = w;
+        this.h = h;
+    }
+
+    void draw() {
+        System.out.println("Drawing Rectangle");
+    }
+
+    void resize(double factor) {
+        w *= factor;
+        h *= factor;
+        System.out.println("Rectangle resized");
+    }
+}
+
+class CircleQ10 extends Shape2DQ10 {
+    double r;
+
+    CircleQ10(double r) {
+        this.r = r;
+    }
+
+    void draw() {
+        System.out.println("Drawing Circle");
+    }
+
+    void resize(double factor) {
+        r *= factor;
+        System.out.println("Circle resized");
+    }
+}
+
+// -------------------- Question 11 --------------------
+abstract class BirdQ11 {
+    abstract void fly();
+
+    abstract void makeSound();
+}
+
+class EagleQ11 extends BirdQ11 {
+    void fly() {
+        System.out.println("Eagle soars high");
+    }
+
+    void makeSound() {
+        System.out.println("Eagle screeches");
+    }
+}
+
+class HawkQ11 extends BirdQ11 {
+    void fly() {
+        System.out.println("Hawk flies swiftly");
+    }
+
+    void makeSound() {
+        System.out.println("Hawk whistles");
+    }
+}
+
+// -------------------- Question 12 --------------------
+abstract class GeometricShapeQ12 {
+    abstract double area();
+
+    abstract double perimeter();
+}
+
+class TriangleQ12 extends GeometricShapeQ12 {
+    double a, b, c;
+
+    TriangleQ12(double a, double b, double c) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    double area() {
+        double s = (a + b + c) / 2;
+        return Math.sqrt(s * (s - a) * (s - b) * (s - c));
+    }
+
+    double perimeter() {
+        return a + b + c;
+    }
+}
+
+class SquareQ12 extends GeometricShapeQ12 {
+    double side;
+
+    SquareQ12(double s) {
+        side = s;
+    }
+
+    double area() {
+        return side * side;
+    }
+
+    double perimeter() {
+        return 4 * side;
+    }
+}
+
+// -------------------- Main Method --------------------
+public class q1toq12 {
+    public static void main(String[] args) {
+        System.out.println("----- Question 1 Output -----");
+        AnimalQ1 lion1 = new LionQ1();
+        AnimalQ1 tiger1 = new TigerQ1();
+        lion1.sound();
+        tiger1.sound();
+
+        System.out.println("\n----- Question 2 Output -----");
+        ShapeQ2 circle2 = new CircleQ2(5);
+        ShapeQ2 triangle2 = new TriangleQ2(3, 4, 5);
+        System.out.println("Circle Area: " + circle2.calculateArea());
+        System.out.println("Circle Perimeter: " + circle2.calculatePerimeter());
+        System.out.println("Triangle Area: " + triangle2.calculateArea());
+        System.out.println("Triangle Perimeter: " + triangle2.calculatePerimeter());
+
+        System.out.println("\n----- Question 3 Output -----");
+        SavingsAccountQ3 sa3 = new SavingsAccountQ3();
+        CurrentAccountQ3 ca3 = new CurrentAccountQ3();
+        sa3.deposit(1000);
+        sa3.withdraw(500);
+        ca3.deposit(1000);
+        ca3.withdraw(1500);
+        System.out.println("SavingsAccount Balance: " + sa3.balance);
+        System.out.println("CurrentAccount Balance: " + ca3.balance);
+
+        System.out.println("\n----- Question 4 Output -----");
+        LionQ4 lion4 = new LionQ4();
+        TigerQ4 tiger4 = new TigerQ4();
+        DeerQ4 deer4 = new DeerQ4();
+        lion4.eat();
+        lion4.sleep();
+        tiger4.eat();
+        tiger4.sleep();
+        deer4.eat();
+        deer4.sleep();
+
+        System.out.println("\n----- Question 5 Output -----");
+        ManagerQ5 manager5 = new ManagerQ5();
+        ProgrammerQ5 programmer5 = new ProgrammerQ5();
+        manager5.displayInfo();
+        programmer5.displayInfo();
+
+        System.out.println("\n----- Question 6 Output -----");
+        SphereQ6 sphere6 = new SphereQ6(3);
+        CubeQ6 cube6 = new CubeQ6(2);
+        System.out.println("Sphere Volume: " + sphere6.calculateVolume());
+        System.out.println("Sphere Surface Area: " + sphere6.calculateSurfaceArea());
+        System.out.println("Cube Volume: " + cube6.calculateVolume());
+        System.out.println("Cube Surface Area: " + cube6.calculateSurfaceArea());
+
+        System.out.println("\n----- Question 7 Output -----");
+        CarQ7 car7 = new CarQ7();
+        MotorcycleQ7 moto7 = new MotorcycleQ7();
+        car7.startEngine();
+        car7.stopEngine();
+        moto7.startEngine();
+        moto7.stopEngine();
+
+        System.out.println("\n----- Question 8 Output -----");
+        AthleteQ8 athlete8 = new AthleteQ8();
+        LazyPersonQ8 lazy8 = new LazyPersonQ8();
+        athlete8.eat();
+        athlete8.exercise();
+        lazy8.eat();
+        lazy8.exercise();
+
+        System.out.println("\n----- Question 9 Output -----");
+        GlockenspielQ9 glock9 = new GlockenspielQ9();
+        ViolinQ9 violin9 = new ViolinQ9();
+        glock9.play();
+        glock9.tune();
+        violin9.play();
+        violin9.tune();
+
+        System.out.println("\n----- Question 10 Output -----");
+        RectangleQ10 rect10 = new RectangleQ10(4, 5);
+        CircleQ10 circ10 = new CircleQ10(3);
+        rect10.draw();
+        rect10.resize(2);
+        circ10.draw();
+        circ10.resize(1.5);
+
+        System.out.println("\n----- Question 11 Output -----");
+        EagleQ11 eagle11 = new EagleQ11();
+        HawkQ11 hawk11 = new HawkQ11();
+        eagle11.fly();
+        eagle11.makeSound();
+        hawk11.fly();
+        hawk11.makeSound();
+
+        System.out.println("\n----- Question 12 Output -----");
+        TriangleQ12 tri12 = new TriangleQ12(3, 4, 5);
+        SquareQ12 sq12 = new SquareQ12(4);
+        System.out.println("Triangle Area: " + tri12.area());
+        System.out.println("Triangle Perimeter: " + tri12.perimeter());
+        System.out.println("Square Area: " + sq12.area());
+        System.out.println("Square Perimeter: " + sq12.perimeter());
+    }
+}
