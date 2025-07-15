@@ -117,7 +117,6 @@ class SavingsAccount implements Account {
 
 class CurrentAccount implements Account {
     private double balance;
-    private double overdraftLimit = 500;
 
     public void deposit(double amount) {
         balance += amount;
